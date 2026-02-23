@@ -34,6 +34,7 @@ import Metro210Select from "../custom-forms/metro-seat-select";
 import Metro210EndStopUpdate from "../custom-forms/update-end-stop-update";
 import Metro210StartEndStopSelection from "../custom-forms/trv11_start_end_stop_selection";
 import { RJSFSchema } from "@rjsf/utils";
+import RetINVLInit from "../custom-forms/retinvl-init";
 
 export interface FormFieldConfigType {
     name: string;
@@ -52,6 +53,7 @@ export interface FormFieldConfigType {
         | "airline_seat_select"
         | "ret10_grocery_select"
         | "ret11_nestedSelect"
+        | "retinvl_init"
         | "nestedSelect"
         | "trv_select"
         | "trv10_select"
@@ -184,6 +186,10 @@ export default function FormConfig({
 
     if (formConfig.find((field) => field.type === "ret10_grocery_select")) {
         return <Ret10GrocerySelect submitEvent={submitEvent} />;
+    }
+
+    if (formConfig.find((field) => field.type === "retinvl_init")) {
+        return <RetINVLInit submitEvent={submitEvent} />;
     }
 
     if (formConfig.find((field) => field.type === "ret11_nestedSelect")) {
